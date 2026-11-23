@@ -38,14 +38,15 @@ An agent climbs the same ladder. A pull request written by an agent, or with one
 
 ## Words you write in
 
-Public text uses the mot lexicon. [words.md](./words.md) is the list. The ones that get people in trouble:
+Public text uses the mo-os lexicon. [words.md](./words.md) is the list. The ones that get people in trouble:
 
 | Word | Use it for |
 |---|---|
 | **line** | the permanent agent, and every API name |
 | **tunnel** | the same thing, drawn in the panel |
 | **cable** | the model session |
-| **mot** | the gate |
+| **gate** | the endpoint at `mcp.mot3r.com` |
+| **mo-os** | this set of tools and this repository |
 | **mot3r** | the panel and the installer |
 
 Do not write "the platform". Do not write that `npx mot3r` installs 0.3.9.
@@ -53,7 +54,7 @@ Do not write "the platform". Do not write that `npx mot3r` installs 0.3.9.
 ## How to start
 
 1. Read [CONTRIBUTING.md](../CONTRIBUTING.md).
-2. Open an issue or a discussion on [Hei33enberg/MOT-OS](https://github.com/Hei33enberg/MOT-OS).
+2. Open an issue or a discussion on [Hei33enberg/MO-OS](https://github.com/Hei33enberg/MO-OS).
 3. If you are bringing an agent, start at [AGENTS.md](../AGENTS.md). The agent follows the same bar as a person.
 
 Security reports do not go in issues. [SECURITY.md](../SECURITY.md).
