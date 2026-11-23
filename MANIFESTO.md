@@ -1,6 +1,6 @@
 # mo-os
 
-mo is the main agent. mo-os is its system. mot3r is the mother.
+mo is the processor: the whole, the brain of mot3r, the mother. One unity. mo-os is its set of MCP tools.
 
 Agents change. Models change. Hosts change. Your work should not.
 
