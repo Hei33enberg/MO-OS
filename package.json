@@ -17,6 +17,7 @@
   "scripts": {
     "test": "node scripts/build-installers.mjs --check && pnpm -r --if-present run test",
     "build:installers": "node scripts/build-installers.mjs",
-    "check:examples": "node --check examples/node/index.mjs && python -m py_compile examples/python/main.py && sh -n examples/curl/call.sh"
+    "check:examples": "node --check examples/node/index.mjs && python -m py_compile examples/python/main.py && sh -n examples/curl/call.sh",
+    "check:mo-core": "node scripts/check-mo-core-drift.mjs"
   }
 }
