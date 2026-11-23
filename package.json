@@ -1,12 +1,12 @@
 {
-  "name": "mot-os",
+  "name": "mo-os",
   "version": "0.3.4",
   "private": true,
-  "description": "mot — lines for agents. Client installer, stdio bridge, examples and docs (MIT). Private monorepo version tracks the published npm client mot3r@0.3.4; the hosted product on mot3r.com / mcp.mot3r.com is mot3r 0.3.9 (panel wersja.json). The hosted service is not in this repository.",
-  "homepage": "https://github.com/Hei33enberg/MOT-OS",
+  "description": "mo-os: MCP tools for agents. Client installer, stdio bridge, examples and docs (MIT). Monorepo version tracks the published npm client mot3r@0.3.4; the hosted gate on mot3r.com / mcp.mot3r.com is 0.3.9 (panel wersja.json). The hosted service is not in this repository.",
+  "homepage": "https://mot3r.com/mo-os/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hei33enberg/MOT-OS.git"
+    "url": "https://github.com/Hei33enberg/MO-OS.git"
   },
   "license": "MIT",
   "type": "module",
