@@ -1,6 +1,6 @@
 # Contributing
 
-This repository is the client side of mot: the installer and stdio bridge, the examples and the docs.
+This repository is the client side of mo-os: the installer and stdio bridge, the examples and the docs.
 
 ## Before you start
 
@@ -12,8 +12,8 @@ This repository is the client side of mot: the installer and stdio bridge, the e
 ## Set up
 
 ```bash
-git clone https://github.com/Hei33enberg/MOT-OS.git
-cd mot-os
+git clone https://github.com/Hei33enberg/MO-OS.git
+cd MO-OS
 pnpm install          # no dependencies; this only links the packages
 pnpm test             # installer tests + installers in sync with packages/mot3r
 pnpm check:examples   # the examples parse
