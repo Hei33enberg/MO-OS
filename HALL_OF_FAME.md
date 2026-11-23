@@ -1,6 +1,6 @@
 # Hall of Fame
 
-The public ledger of the [Realm](./REALM.md) — contributors whose work made a meaningful difference to the mot client. Machine-readable mirror: [`community/realm.json`](./community/realm.json).
+The public ledger of the [Realm](./REALM.md) — contributors whose work made a meaningful difference to the mo-os client. Machine-readable mirror: [`community/realm.json`](./community/realm.json).
 
 ## Levels
 
@@ -36,4 +36,4 @@ Typo fixes, dependency bumps, and trivial cleanups stay on the GitHub contributo
 
 ## Funding
 
-Per-use payments for the hosted mot gate sustain the product ([PRICING.md](./PRICING.md)). This client repository stays MIT.
+Per-use payments for the hosted gate sustain the product ([PRICING.md](./PRICING.md)). This client repository stays MIT.
