@@ -1,13 +1,13 @@
 {
   "name": "mot3r",
   "version": "0.3.4",
-  "description": "Installer and stdio bridge for the mot gateway (npm client 0.3.4; hosted product is mot3r 0.3.9). Wires mcp.mot3r.com into Claude Code, Claude Desktop, Cursor and VS Code. No dependencies.",
+  "description": "Installer and stdio bridge for mo-os (npm client 0.3.4; the hosted gate is 0.3.9). Wires mcp.mot3r.com into Claude Code, Claude Desktop, Cursor and VS Code. No dependencies.",
   "license": "MIT",
   "type": "module",
-  "homepage": "https://github.com/Hei33enberg/MOT-OS/tree/main/packages/mot3r",
+  "homepage": "https://mot3r.com/mo-os/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hei33enberg/MOT-OS.git",
+    "url": "https://github.com/Hei33enberg/MO-OS.git",
     "directory": "packages/mot3r"
   },
   "bin": {
@@ -29,6 +29,7 @@
     "test": "node --test test/*.test.mjs"
   },
   "keywords": [
+    "mo-os",
     "mot",
     "mcp",
     "model-context-protocol",
