@@ -1,0 +1,1244 @@
+{
+  "contract": "mo.core/v1",
+  "stage": "draft",
+  "as_of": "2026-11-23",
+  "about": "One list, one name per action. A canonical name is what a gateway should list; aliases are the names that exist today and keep working. No gateway serves the canonical names yet.",
+  "modules": [
+    {
+      "id": "mots",
+      "title": "mots",
+      "summary": "Tunnels: attach, hand over, inbox and the core of a session."
+    },
+    {
+      "id": "mixer",
+      "title": "mixer",
+      "summary": "Router, hub and mixer: rules (RIDER), checks (MASTER), limits, decision cards and threat taxonomy."
+    },
+    {
+      "id": "ops",
+      "title": "OPS",
+      "summary": "Plugins, connectors, MCP and APIs."
+    },
+    {
+      "id": "shells",
+      "title": "SHELLS",
+      "summary": "Soul, head, eyes, living space and ledger of every mot."
+    },
+    {
+      "id": "devices",
+      "title": "DEVICES",
+      "summary": "Paired devices and their sessions."
+    },
+    {
+      "id": "int-comm",
+      "title": "Int. Comm",
+      "summary": "Internal communication: direct messages, channels, push-to-talk, identity."
+    },
+    {
+      "id": "ext-comm",
+      "title": "Ext. Comm",
+      "summary": "External communication: mail, domain channels, SMS, voice, outbound channel adapters, human actions."
+    },
+    {
+      "id": "setup",
+      "title": "setup",
+      "summary": "Settings of one mot."
+    },
+    {
+      "id": "amplitun3r",
+      "title": "amplitun3r",
+      "summary": "Marketplace of mini-apps and frame interiors, plus the frame own discovery tools."
+    },
+    {
+      "id": "vault-ledger",
+      "title": "vault / LEDGER",
+      "summary": "Vault, ledger, billing and wallet."
+    },
+    {
+      "id": "mom",
+      "title": "MOM",
+      "summary": "Memory, local and cloud."
+    },
+    {
+      "id": "mo",
+      "title": "mo",
+      "summary": "The internal agent of the frame."
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "mosadd",
+      "label": "mosADD MCP gateway (mcp.mosadd.com, package @mosadd/mcp)"
+    },
+    {
+      "id": "mot",
+      "label": "mot MCP gateway (mcp.mot3r.com)"
+    },
+    {
+      "id": "3t3r",
+      "label": "3T3R: public MCP (3t3r.com/mcp) and the agent chat gateway"
+    },
+    {
+      "id": "webmcp",
+      "label": "mosADD in-page WebMCP tools"
+    },
+    {
+      "id": "desktop-rag",
+      "label": "mosADD desktop local MCP server (127.0.0.1)"
+    },
+    {
+      "id": "desktop-agent",
+      "label": "mosADD desktop agent local tools"
+    },
+    {
+      "id": "truthgate",
+      "label": "voice truthgate MCP service (parked)"
+    }
+  ],
+  "statuses": {
+    "live": "listed in a public tools/list today",
+    "flagged": "implemented, hidden behind a flag, off by default",
+    "parked": "implemented, deliberately not exposed",
+    "internal": "used by an in-product agent gateway, in no public tools/list",
+    "local": "runs in a local process on the user machine",
+    "page": "offered to agents that read a web page (WebMCP)"
+  },
+  "prefixes": {
+    "cable": "A model session on a tunnel: limits and session commands.",
+    "call": "Phone calls through the owner own carrier account.",
+    "cue": "Decision cards raised for the owner (CUE).",
+    "device": "The computer an agent runs on.",
+    "embed": "Putting a live channel on a web page.",
+    "human": "Actions that ask a person to confirm, upload, fill in or share a screen.",
+    "identity": "Resolving addresses, handles and numbers to one identity.",
+    "master": "MASTER: checking a result against the RIDER.",
+    "mAYL": "mAYL brand: e-mail of an account or an agent.",
+    "mDM": "mDM brand: direct messages.",
+    "mIRC": "mIRC brand: channels.",
+    "mo": "The frame itself: discovery and connection information.",
+    "mom": "MOM: memory, search, graph, notes and sources.",
+    "mot": "A tunnel (mot): attach, hand over, inbox and outbound messages.",
+    "mTALK": "mTALK brand: push-to-talk rooms.",
+    "mURL": "mURL brand: chat channels of web domains.",
+    "orb": "The ORB sphere: a person circle, conversations and view.",
+    "reply": "The reply lane of a session.",
+    "rider": "RIDER: the rules an owner sets for a tunnel.",
+    "skill": "What an agent can do (skills).",
+    "sms": "SMS through the owner own carrier account.",
+    "threat": "Threat taxonomy and classification.",
+    "vault": "Secrets a tunnel may read.",
+    "voice": "Voice authenticity checks and voice prints.",
+    "wallet": "Prepaid balance, plan and Energy.",
+    "waves": "Radio and TV stations (WAVES).",
+    "web": "Live web search."
+  },
+  "tools": [
+    {
+      "name": "cable_commands",
+      "module": "mots",
+      "status": "live",
+      "summary": "Declare which of new session, compact and clear this agent really does, pick up the commands the owner gave it and answer the ones it carried out.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "mot_attach",
+      "module": "mots",
+      "status": "live",
+      "summary": "Plug this session into the tunnel of its key and receive the identity package: tunnel, lease and epoch, persona, wiring, memory brief and the shell for this run.",
+      "aliases": [
+        { "name": "line_attach", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mot_handover",
+      "module": "mots",
+      "status": "live",
+      "summary": "Append an entry to this cable's work log on the tunnel; the next cable receives the last entry.",
+      "aliases": [
+        { "name": "line_handover", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mot_inbox",
+      "module": "mots",
+      "status": "live",
+      "summary": "Read the tunnel's messages from all wired channel accounts, both directions, with a cursor; `pending: true` returns only messages still waiting for an answer.",
+      "aliases": [
+        { "name": "line_inbox", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mot_release",
+      "module": "mots",
+      "status": "live",
+      "summary": "Give the lease back and leave a handover note for the next cable.",
+      "aliases": [
+        { "name": "line_release", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mot_skip",
+      "module": "mots",
+      "status": "live",
+      "summary": "Mark an incoming message as handled without a reply, with a reason such as spam or duplicate.",
+      "aliases": [
+        { "name": "line_skip", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mot_wiring_list",
+      "module": "mots",
+      "status": "live",
+      "summary": "List the channel accounts wired to the tunnel, with direction, memory policy, default outgoing flag and health.",
+      "aliases": [
+        { "name": "line_wiring_list", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "cable_report_limits",
+      "module": "mixer",
+      "status": "live",
+      "summary": "Report a usage reading of the model account behind this cable, such as a provider 429 or 402.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "cue_raise",
+      "module": "mixer",
+      "status": "flagged",
+      "summary": "Raise a decision card instead of staying silent: a question, two to six options and a default that applies after the deadline.",
+      "note": "Off by default behind a flag.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "master_check",
+      "module": "mixer",
+      "status": "live",
+      "summary": "Run your result through MASTER before it goes to the owner: forbidden words, names outside the rider, a foreign language and similar rider rules.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "rider_list",
+      "module": "mixer",
+      "status": "live",
+      "summary": "Live rules of this tunnel's rider (heaviest first), the catalog of rule kinds and how many results MASTER stopped this week.",
+      "aliases": [
+        { "name": "line_rider_list", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "rider_put",
+      "module": "mixer",
+      "status": "live",
+      "summary": "Add a rule the owner set for this tunnel: brand, naming, tone, forbidden words, output language, a dated owner decision or similar.",
+      "aliases": [
+        { "name": "line_rider_put", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "rider_retire",
+      "module": "mixer",
+      "status": "live",
+      "summary": "Move a rule of this tunnel's rider to history with a reason.",
+      "aliases": [
+        { "name": "line_rider_retire", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "threat_catalog",
+      "module": "mixer",
+      "status": "live",
+      "summary": "List the threat-event taxonomy with category, default severity and platforms.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "threat_classify",
+      "module": "mixer",
+      "status": "live",
+      "summary": "Classify one telemetry event against the threat taxonomy.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mo_capabilities",
+      "module": "ops",
+      "status": "live",
+      "summary": "List the base toolkit and which transport each tool needs.",
+      "note": "Today's list leaves out the tunnel, vault and SMS tools; the canonical list must be complete.",
+      "aliases": [
+        { "name": "comms_capabilities", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "web_search",
+      "module": "ops",
+      "status": "internal",
+      "summary": "Search the live web for current, verifiable facts.",
+      "as_is": ["3t3r"]
+    },
+    {
+      "name": "skill_list",
+      "module": "shells",
+      "status": "live",
+      "summary": "List what the agent can actually do for this person: its skills, each with a short description.",
+      "aliases": [
+        { "name": "skills_list", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "device_files",
+      "module": "devices",
+      "status": "local",
+      "summary": "List the files in the agent's working directory.",
+      "aliases": [
+        { "name": "komputer_pliki", "surfaces": ["desktop-agent"] }
+      ]
+    },
+    {
+      "name": "device_read",
+      "module": "devices",
+      "status": "local",
+      "summary": "Read a file from the agent's working directory.",
+      "aliases": [
+        { "name": "komputer_czytaj", "surfaces": ["desktop-agent"] }
+      ]
+    },
+    {
+      "name": "device_run",
+      "module": "devices",
+      "status": "local",
+      "summary": "Run a command on this computer; available only once commands are enabled, off by default.",
+      "note": "Off by default; added only once commands are enabled.",
+      "aliases": [
+        { "name": "komputer_uruchom", "surfaces": ["desktop-agent"] }
+      ]
+    },
+    {
+      "name": "device_screenshot",
+      "module": "devices",
+      "status": "local",
+      "summary": "Capture the whole screen into a file in the agent's directory.",
+      "aliases": [
+        { "name": "komputer_zrzut", "surfaces": ["desktop-agent"] }
+      ]
+    },
+    {
+      "name": "device_status",
+      "module": "devices",
+      "status": "local",
+      "summary": "Report the state of this computer: host, user and operating system.",
+      "aliases": [
+        { "name": "komputer_stan", "surfaces": ["desktop-agent"] }
+      ]
+    },
+    {
+      "name": "identity_resolve",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Turn an address, a handle, a phone number or an identity id into one identity; exact matches only.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "mDM_call_answer",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Answer an incoming one-to-one call and receive the join credentials.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_call_end",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "End a one-to-one call.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_call_start",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Start a one-to-one voice or video call and receive the join credentials.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_delete",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Delete a direct message you sent, for both sides.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_edit",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Replace the text of a direct message you sent; encrypted messages cannot be edited.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_list",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "List recent direct messages with one contact, decrypting encrypted ones.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_list_contacts",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "List the account's contacts with their `identity_id`, handle, display name and state.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_list_my_agents",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "List the agents you may speak as with `mDM_send_as_agent`.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_publish_keys",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Publish your prekey bundle so contacts can start an end-to-end-encrypted conversation with you.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_respond_request",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Accept or reject an incoming message request from someone outside the contact list.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_send",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Send a direct message to a contact, end-to-end encrypted when both sides support it.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_send_as_agent",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Send a direct message as one of your own agents instead of as yourself.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_send_file",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Send a file from base64 bytes.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_send_unencrypted",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Send a direct message as plain text.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_send_voice",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Send a voice message from base64 audio.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mDM_voice_note",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Send a voice note that points to an audio clip already uploaded.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_approve_request",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Approve a pending access request; moderators and above.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_ban",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Ban a member until unbanned; admins and above.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_create",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Create a persistent channel that is open, password-protected or private.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_delete",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Delete a channel and its memberships; owner only.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_discover",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Browse the public directory of open channels.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_get",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Get the details of one channel.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_guest_link",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Create a secret link that lets one person without an account read and post in this one channel; owner and admins only.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "mIRC_invite",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Add someone to a channel you own or administer.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_join",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Join a channel, with a password for password-protected ones.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_kick",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Remove a member, who may rejoin unless banned; moderators and above.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_leave",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Leave a channel.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_list",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "List the channels available to you.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_list_messages",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "List recent messages in a channel, newest first, with a cursor.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_members",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "List the members of a channel with role, state, address and kind; paged.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "mIRC_my_invites",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "List the channel invites waiting for your account, including those for your agents and robots.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "mIRC_post_message",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Post a text message into a channel.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_redeem_invite",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Join a channel with an invite code or with an invite id from `mIRC_my_invites`; safe to repeat.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "mIRC_reject_request",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Reject a pending access request; moderators and above.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_report",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Report a channel for abuse, with a reason.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_request_access",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Ask to join a password-protected or private channel.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_send_file",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Post a file into a channel from base64 bytes.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_send_voice",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Post a voice message into a channel from base64 audio.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_set_ptt",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Grant or revoke a member's push-to-talk permission in a voice channel.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_set_role",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Promote or demote a member below your own role.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_transfer_ownership",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Hand a channel you own to another active member; owner only, safe to repeat.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "mIRC_unban",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Lift a ban; admins and above.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_update",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Change a channel's name, topic or capabilities; owner only.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mTALK_join",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Get credentials (token and media URL) to join a room's audio transport.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mTALK_open",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Open or get a push-to-talk room and return a stable `room_id`.",
+      "note": "Hidden in the mot brand unless the push-to-talk flag is on; one list must show it on every host.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mTALK_press",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Request the floor in a room.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mTALK_release",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Give up the floor or cancel a queued request; the next participant is promoted.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mTALK_state",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Read who is transmitting, since when, and the waiting queue, without changing it.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "reply_lane_attach",
+      "module": "int-comm",
+      "status": "live",
+      "summary": "Claim the reply lane for this session so the owner talks to you rather than the stand-in agent.",
+      "note": "Not mot_attach: this claims the reply lane of a session, mot_attach plugs a session into a tunnel.",
+      "aliases": [
+        { "name": "comms_session_attach", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "call_start",
+      "module": "ext-comm",
+      "status": "flagged",
+      "summary": "Place a phone call through your own connected carrier account, billed per answered second.",
+      "note": "Off by default; hidden from tools/list until phone calls are live.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "call_status",
+      "module": "ext-comm",
+      "status": "flagged",
+      "summary": "Report the status of a call placed with call_start: duration, billed seconds and cost.",
+      "note": "Off by default; hidden from tools/list until phone calls are live.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "human_action_create",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Create a single-use, expiring link that asks a person to confirm, upload a file, fill a form or share a screen.",
+      "aliases": [
+        { "name": "comms_action_create", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "human_action_frame_get",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Get the current screen frame from a screen-share link you created.",
+      "aliases": [
+        { "name": "comms_action_frame_get", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mAYL_agentbox_extend",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Extend the lifetime of a temporary agent inbox, up to 24 hours from now.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_agentbox_list",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "List your active agent inboxes.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_agentbox_provision",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Create an inbox of the agent's own that can send and receive, temporary by default.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_agentbox_release",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Delete an agent inbox so it stops receiving.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_audit_export",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Export a signed engagement report for one sent e-mail.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_consent",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "List, check or reset recipients who opted out of tracking.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_delete",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Delete one of your e-mails from the mailbox.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_events",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Get the full engagement timeline of one sent e-mail.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_list",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "List the mailbox, newest first, with sender, subject, status and a snippet.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_metrics",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Get engagement totals across all your sent mail.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_notify",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Read the feed of recent opens, clicks and forwards across your sent mail.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_revoke",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Revoke, or restore, a recipient's access to a sent e-mail through the reader link.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_send",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Send an e-mail from your mot address, with optional open and click tracking.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_send_as_agent",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Send an e-mail stamped as sent by an agent, with its `agent_id`.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_stats",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Get the open and click summary of one sent e-mail.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mAYL_view",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Read the full body and metadata of one e-mail.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_history_edge",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Read up to 100 recent messages held at the edge for a channel.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_mint_channel_token",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Exchange your key for a five-minute token scoped to one channel, safe to hand to a browser.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mIRC_send_edge",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Post a message through the low-latency edge path, fanned out to live subscribers.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mot_edit",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Edit the text of a message this tunnel sent earlier through a Telegram bot (`message_id` from `mot_send` or `mot_inbox`).",
+      "aliases": [
+        { "name": "line_edit", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mot_react",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "React with one emoji to a message of this tunnel in a Telegram chat; `emoji` null removes the reaction.",
+      "aliases": [
+        { "name": "line_react", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mot_send",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Send a message as the tunnel through one of its wired channel accounts; `reply_to` answers in the same account and thread.",
+      "aliases": [
+        { "name": "line_send", "surfaces": ["mot"] }
+      ]
+    },
+    {
+      "name": "mURL_create",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Claim the channel of a domain and become its owner.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mURL_delete",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Delete a domain channel you own.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mURL_list_channels",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "List trending domain channels, the catalogue, or the ones you verified.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mURL_post",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Post a message into a web domain's chat channel.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mURL_presence",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "See how many people are on a domain's channel right now.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mURL_read_channel",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Read the live chat channel of a web domain.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "mURL_update",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Change the branding or status of a domain channel you own.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "sms_send",
+      "module": "ext-comm",
+      "status": "live",
+      "summary": "Send an SMS through your own connected Telnyx or Twilio account.",
+      "note": "Same name on two surfaces; the implementations were not compared.",
+      "as_is": ["mosadd", "mot"]
+    },
+    {
+      "name": "voice_check",
+      "module": "ext-comm",
+      "status": "parked",
+      "summary": "Check a recording against an enrolled voice print.",
+      "aliases": [
+        { "name": "voice_truthgate_check_recording", "surfaces": ["truthgate"] }
+      ]
+    },
+    {
+      "name": "voice_enroll",
+      "module": "ext-comm",
+      "status": "parked",
+      "summary": "Enroll a reference voice print for a person.",
+      "aliases": [
+        { "name": "voice_truthgate_enroll", "surfaces": ["truthgate"] }
+      ]
+    },
+    {
+      "name": "voice_rhythm",
+      "module": "ext-comm",
+      "status": "parked",
+      "summary": "Analyze the speech rhythm of a recording.",
+      "aliases": [
+        { "name": "voice_truthgate_analyze_rhythm", "surfaces": ["truthgate"] }
+      ]
+    },
+    {
+      "name": "voice_subject_delete",
+      "module": "ext-comm",
+      "status": "parked",
+      "summary": "Delete an enrolled voice print.",
+      "aliases": [
+        { "name": "voice_truthgate_delete_subject", "surfaces": ["truthgate"] }
+      ]
+    },
+    {
+      "name": "voice_subjects",
+      "module": "ext-comm",
+      "status": "parked",
+      "summary": "List the enrolled voice prints.",
+      "aliases": [
+        { "name": "voice_truthgate_list_subjects", "surfaces": ["truthgate"] }
+      ]
+    },
+    {
+      "name": "voice_verify",
+      "module": "ext-comm",
+      "status": "parked",
+      "summary": "Verify a call clip and return a verdict on whether the voice is authentic.",
+      "note": "Parked service; not exposed.",
+      "aliases": [
+        { "name": "voice_truthgate_verify", "surfaces": ["truthgate"] }
+      ]
+    },
+    {
+      "name": "embed_create",
+      "module": "amplitun3r",
+      "status": "live",
+      "summary": "Create an embed key and HTML snippet that puts a live channel on your site.",
+      "aliases": [
+        { "name": "comms_embed_create", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mo_connect",
+      "module": "amplitun3r",
+      "status": "page",
+      "summary": "Explain how to connect an agent: key, MCP endpoint and stdio.",
+      "aliases": [
+        { "name": "mosadd_connect_agent", "surfaces": ["webmcp"] }
+      ]
+    },
+    {
+      "name": "mo_modules",
+      "module": "amplitun3r",
+      "status": "page",
+      "summary": "List the product's modules and what is encrypted, stated plainly.",
+      "aliases": [
+        { "name": "mosadd_modules", "surfaces": ["webmcp"] }
+      ]
+    },
+    {
+      "name": "mo_overview",
+      "module": "amplitun3r",
+      "status": "page",
+      "summary": "Answer what this product is, for agents that read the page through WebMCP.",
+      "aliases": [
+        { "name": "mosadd_overview", "surfaces": ["webmcp"] }
+      ]
+    },
+    {
+      "name": "orb_conversations",
+      "module": "amplitun3r",
+      "status": "internal",
+      "summary": "Report the state of the person's conversations on the sphere: how many, how many unread, never their content.",
+      "aliases": [
+        { "name": "orb_my_conversations", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "orb_crossings",
+      "module": "amplitun3r",
+      "status": "internal",
+      "summary": "Report how many of today's daily crossings are left and how many await an answer.",
+      "aliases": [
+        { "name": "orb_crossings_left", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "orb_near",
+      "module": "amplitun3r",
+      "status": "internal",
+      "summary": "Show who is in the person's circle on the sphere right now, as counts and distance bands only.",
+      "aliases": [
+        { "name": "orb_who_is_near", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "orb_people",
+      "module": "amplitun3r",
+      "status": "live",
+      "summary": "List the person's own circle on the sphere: who they keep close and who can already talk to them.",
+      "aliases": [
+        { "name": "orb_my_people", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "orb_set_sky_day",
+      "module": "amplitun3r",
+      "status": "internal",
+      "summary": "Rotate the sphere's sky to a chosen day.",
+      "as_is": ["3t3r"]
+    },
+    {
+      "name": "orb_show_person",
+      "module": "amplitun3r",
+      "status": "internal",
+      "summary": "Highlight one of the person's own people on the sphere they are looking at.",
+      "as_is": ["3t3r"]
+    },
+    {
+      "name": "orb_show_relation",
+      "module": "amplitun3r",
+      "status": "internal",
+      "summary": "Draw the bond between two of the person's own people on the sphere.",
+      "as_is": ["3t3r"]
+    },
+    {
+      "name": "waves_search",
+      "module": "amplitun3r",
+      "status": "live",
+      "summary": "Search radio stations and TV channels worldwide by name, genre or country.",
+      "as_is": ["3t3r"]
+    },
+    {
+      "name": "vault_get",
+      "module": "vault-ledger",
+      "status": "live",
+      "summary": "Read the value of one vault entry by name, with its status, expiry and service; a live entry wins over a dead one of the same name.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "vault_list",
+      "module": "vault-ledger",
+      "status": "live",
+      "summary": "List the vault entries this tunnel may use, with name, description, kind, service, status and expiry, live ones first, without their values.",
+      "as_is": ["mot"]
+    },
+    {
+      "name": "wallet_state",
+      "module": "vault-ledger",
+      "status": "live",
+      "summary": "Show the person's plan and how much Energy they have left to spend on the agent's attention.",
+      "aliases": [
+        { "name": "energy_state", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "mom_delete",
+      "module": "mom",
+      "status": "live",
+      "summary": "Remove indexed content by `source_id` or `thread_id`.",
+      "aliases": [
+        { "name": "mRAG_delete", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mom_graph_neighbors",
+      "module": "mom",
+      "status": "live",
+      "summary": "Walk the connections of one party in the graph, up to two hops.",
+      "aliases": [
+        { "name": "mRAG_graph_neighbors", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mom_graph_overview",
+      "module": "mom",
+      "status": "live",
+      "summary": "List the people, companies and services in your knowledge graph, busiest first.",
+      "aliases": [
+        { "name": "mRAG_graph_overview", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mom_graph_refresh",
+      "module": "mom",
+      "status": "live",
+      "summary": "Rebuild your knowledge graph from indexed data and get its counts.",
+      "aliases": [
+        { "name": "mRAG_graph_refresh", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mom_graph_timeline",
+      "module": "mom",
+      "status": "live",
+      "summary": "List where and when one party appeared, newest first.",
+      "aliases": [
+        { "name": "mRAG_graph_timeline", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mom_ingest",
+      "module": "mom",
+      "status": "live",
+      "summary": "Add text to your private knowledge base so `mom_search` can find it later.",
+      "aliases": [
+        { "name": "mRAG_ingest", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mom_list_sources",
+      "module": "mom",
+      "status": "live",
+      "summary": "List what is indexed in your knowledge base, grouped by source.",
+      "aliases": [
+        { "name": "mRAG_list_sources", "surfaces": ["mosadd", "mot"] }
+      ]
+    },
+    {
+      "name": "mom_local_query",
+      "module": "mom",
+      "status": "local",
+      "summary": "Hybrid (BM25 plus vector) search over the local message history on this computer; read-only.",
+      "note": "Read-only today; local write and sync to the cloud are not built.",
+      "aliases": [
+        { "name": "rag.query", "surfaces": ["desktop-rag"] }
+      ]
+    },
+    {
+      "name": "mom_local_recent",
+      "module": "mom",
+      "status": "local",
+      "summary": "List local messages newer than a given time; read-only.",
+      "aliases": [
+        { "name": "rag.recent", "surfaces": ["desktop-rag"] }
+      ]
+    },
+    {
+      "name": "mom_local_stats",
+      "module": "mom",
+      "status": "local",
+      "summary": "Report the local index size: messages, transcripts and vectors.",
+      "aliases": [
+        { "name": "rag.stats", "surfaces": ["desktop-rag"] }
+      ]
+    },
+    {
+      "name": "mom_note_save",
+      "module": "mom",
+      "status": "internal",
+      "summary": "Save a short note to the agent's memory about the person, word for word.",
+      "note": "Two note-saving paths today; merged into one.",
+      "aliases": [
+        { "name": "brain_save_note", "surfaces": ["3t3r"] },
+        { "name": "remember_note", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "mom_search",
+      "module": "mom",
+      "status": "live",
+      "summary": "Search your own messages, mail, calls and notes and get an answer with cited sources.",
+      "aliases": [
+        { "name": "mRAG_search", "surfaces": ["mosadd", "mot"] },
+        { "name": "memory_search", "surfaces": ["3t3r"], "note": "A different store today (the agent's memory of a person); to be merged into one search by scope." }
+      ]
+    },
+    {
+      "name": "mom_source_add",
+      "module": "mom",
+      "status": "internal",
+      "summary": "Pull a real source (book, article, web page) into the agent's memory, when asked to.",
+      "aliases": [
+        { "name": "remember_source", "surfaces": ["3t3r"] }
+      ]
+    },
+    {
+      "name": "mTALK_ingest_ptt",
+      "module": "mom",
+      "status": "live",
+      "summary": "Submit a finished PTT audio segment for transcription into memory.",
+      "as_is": ["mosadd", "mot"]
+    }
+  ]
+}

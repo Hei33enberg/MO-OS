@@ -1,0 +1,24 @@
+{
+  "name": "mo-core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "mo.core/v1: one list of tool names for the whole frame, with the aliases that keep old names working. Data and checks only. Not published.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./validate.mjs",
+    "./drift": "./drift.mjs",
+    "./catalog.json": "./catalog.json"
+  },
+  "files": [
+    "catalog.json",
+    "validate.mjs",
+    "drift.mjs"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  }
+}

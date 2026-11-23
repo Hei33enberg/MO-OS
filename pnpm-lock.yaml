@@ -8,4 +8,6 @@ importers:
 
   .: {}
 
+  packages/mo-core: {}
+
   packages/mot3r: {}
