@@ -6,7 +6,7 @@ Every `tools/call` carries a key in one header:
 Authorization: Bearer mot_lk_live_xxxxxxxx
 ```
 
-No other header. No key in the URL. `initialize`, `tools/list` and `prompts/list` need no key.
+No other header. No key in the URL. `GET /v1/tools` and `GET /v1/pricing` need no key.
 
 ## Key kinds
 
