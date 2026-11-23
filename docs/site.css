@@ -1,0 +1,67 @@
+/* mo-os site. Tokens: DS v3 mot3r (black skin), RA-design-systems systemy/mot/project/mot3r-ds.css. */
+@font-face{font-family:"Inter Tight";src:url("fonts/InterTight-400-latin.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Geist Mono";src:url("fonts/GeistMono-400-latin.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"DotGothic16";src:url("fonts/DotGothic16-400-latin.woff2") format("woff2");font-weight:400;font-display:swap}
+:root{
+  /* tokeny DS v3 mot3r (RADS systemy/mot/project/mot3r-ds.css, skóra czerń) */
+  --tlo:#000000; --karta:#0a0a0a; --kontrolka:#141414;
+  --tekst:#ffffff; --tekst-2:#9398a5; --tekst-3:#4b4f58;
+  --wlos:#ffffff14; --sygnal:#f04a41; --zielen:oklch(0.74 0.17 155);
+  --sans:"Inter Tight",system-ui,sans-serif; --mono:"Geist Mono",ui-monospace,Consolas,monospace; --led:"DotGothic16","Geist Mono",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--tlo);color:var(--tekst)}
+body{font:400 17px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+code,pre{font-family:var(--mono)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tekst-2)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;border-bottom:1px solid var(--wlos)}
+.marka{display:flex;align-items:center;gap:14px}
+.marka img{height:30px;width:auto;display:block}
+.marka .nazwa{font-family:var(--mono);font-size:14px;letter-spacing:.16em}
+.nav nav{display:flex;gap:28px}
+.nav nav a{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tekst-2)}
+.hero{display:grid;grid-template-columns:7fr 5fr;gap:48px;padding:64px 0 72px;align-items:end}
+h1{font-weight:400;font-size:84px;line-height:.98;letter-spacing:-.04em;margin:18px 0 26px}
+.lead{font-size:21px;line-height:1.45;color:var(--tekst-2);max-width:34ch;margin:0 0 32px}
+.lead b{color:var(--tekst);font-weight:400}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.pig{display:inline-flex;align-items:center;height:52px;padding:0 26px;border-radius:999px;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.pig--glowna{background:var(--tekst);color:var(--tlo)}
+.pig--druga{border:1px solid var(--wlos);color:var(--tekst)}
+.led{background:var(--karta);border:1px solid var(--wlos);border-radius:28px;padding:26px 28px 22px}
+.led .rz{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--wlos)}
+.led .rz:last-of-type{border-bottom:0}
+.led .w{font-family:var(--led);font-size:44px;line-height:1;letter-spacing:.02em}
+.led .p{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tekst-2);text-align:right}
+.led .zrodlo{margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--tekst-3);display:flex;gap:8px;align-items:center}
+.kropka{width:7px;height:7px;border-radius:50%;background:var(--zielen);display:inline-block;flex:none}
+section.s{padding:72px 0;border-top:1px solid var(--wlos)}
+h2{font-weight:400;font-size:48px;line-height:1.05;letter-spacing:-.03em;margin:14px 0 36px;max-width:22ch}
+.trzy{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.karta{background:var(--karta);border:1px solid var(--wlos);border-radius:24px;padding:26px}
+.karta h3{font-weight:400;font-size:22px;letter-spacing:-.01em;margin:0 0 10px}
+.nazwa-h{display:block;font-family:var(--mono);font-size:30px;letter-spacing:.02em;margin:0 0 14px}
+.karta p{margin:0;color:var(--tekst-2);font-size:16px}
+.siatka{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kafel{background:var(--karta);border:1px solid var(--wlos);border-radius:20px;padding:20px 20px 18px;min-height:168px;display:flex;flex-direction:column}
+.kafel .n{font-family:var(--led);font-size:40px;line-height:1}
+.kafel .t{font-size:19px;margin:12px 0 4px}
+.kafel .o{color:var(--tekst-2);font-size:14.5px;line-height:1.4;flex:1}
+.kafel code{font-size:11px;color:var(--tekst-3);margin-top:10px;letter-spacing:.04em}
+.pod{margin-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--tekst-2)}
+.dwa{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kroki{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.krok .nr{font-family:var(--led);font-size:28px;color:var(--sygnal)}
+.krok h3{margin-top:10px}
+pre{background:var(--kontrolka);border:1px solid var(--wlos);border-radius:14px;padding:14px 16px;margin:14px 0 0;font-size:12.5px;line-height:1.55;white-space:pre-wrap;word-break:break-all;color:var(--tekst)}
+.lista{list-style:none;margin:0;padding:0}
+.lista li{padding:12px 0;border-bottom:1px solid var(--wlos);display:flex;justify-content:space-between;gap:16px;color:var(--tekst)}
+.lista li span:last-child{font-family:var(--mono);font-size:14px;color:var(--tekst-2);white-space:nowrap}
+.lista li:last-child{border-bottom:0}
+.stopka{padding:40px 0 64px;border-top:1px solid var(--wlos);display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start}
+.stopka p{margin:0 0 6px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--tekst-2)}
+.stopka b{color:var(--tekst);font-weight:400}
+.lista-pod{margin-top:14px;color:var(--tekst-2);font-size:15px}
+.krok-pod{margin-top:14px}
