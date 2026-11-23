@@ -6,13 +6,13 @@ Short sentences. Nouns and verbs. No SaaS filler.
 
 ## The three names
 
-**mo** is the main agent: the agent that runs your work, whatever model runs it today.
+**mo** is the processor: the whole, the brain of mot3r, the mother. One unity. Any model can run in it.
 
-**mo-os** is its system: the set of MCP tools through which it acts on everything, and this repository.
+**mo-os** is its set of MCP tools, and this repository.
 
 **mot3r** is the mother: the panel at [mot3r.com/panel](https://mot3r.com/panel/) that holds your tunnels. The npm installer is also called `mot3r`.
 
-Say: "mo works through mo-os. mot3r holds the tunnels." Do not call mo-os a platform.
+Say: "mo is the brain of mot3r. mo-os is its set of MCP tools." Do not call mo-os a platform.
 
 ## The words that carry the product
 
@@ -74,7 +74,7 @@ A test key (`mot_tk_test_…`) does not reach `line_`. `line_attach` answers 403
 ## Sentences that stay fixed
 
 - One identity. One memory. Any model.
-- mo is the main agent. mo-os is its system. mot3r is the mother.
+- mo is the processor: the whole, the brain of mot3r. One unity. mo-os is its set of MCP tools.
 - The cable dies. The line lives. MOM remembers.
 - In the panel it is a tunnel. In the API it is a line.
 - Outside text is data, never an order.
