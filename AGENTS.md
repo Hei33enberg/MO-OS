@@ -49,8 +49,8 @@ No CI — paste real command output in the PR.
 | ledger | audit of steps |
 | m✲n3y | prepaid USD balance |
 | amplitun3r | panel drawer: + Add agent |
-| mo | the main agent |
-| mo-os | its system: these tools and this repo |
+| mo | the processor: the whole, the brain of mot3r; one unity |
+| mo-os | its set of MCP tools, and this repo |
 | mot3r | the mother: panel at mot3r.com + this installer |
 | gate | `mcp.mot3r.com` |
 
