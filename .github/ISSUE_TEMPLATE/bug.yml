@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in this repository or at the mot endpoint does not work as documented
+description: Something in this repository or at the mo-os gate does not work as documented
 labels: [bug, triage]
 body:
   - type: textarea
