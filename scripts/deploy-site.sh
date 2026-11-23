@@ -8,8 +8,9 @@
 set -eu
 
 : "${MO_OS_HOSTS:?set MO_OS_HOSTS to the nodes, space separated}"
-KEY_OPT=""
-[ -n "${MO_OS_SSH_KEY:-}" ] && KEY_OPT="-i $MO_OS_SSH_KEY"
+# the key path may contain spaces, so it is never word-split
+run_ssh() { if [ -n "${MO_OS_SSH_KEY:-}" ]; then ssh -i "$MO_OS_SSH_KEY" "$@"; else ssh "$@"; fi; }
+run_scp() { if [ -n "${MO_OS_SSH_KEY:-}" ]; then scp -q -i "$MO_OS_SSH_KEY" "$@"; else scp -q "$@"; fi; }
 
 cd "$(dirname "$0")/.."
 FILES="docs/index.html docs/site.css docs/assets docs/fonts"
@@ -26,10 +27,8 @@ tar -C "$PACK" -czf "$PACK/mo-os.tgz" mo-os
 
 for h in $MO_OS_HOSTS; do
   echo "== $h"
-  # shellcheck disable=SC2086
-  scp -q $KEY_OPT "$PACK/mo-os.tgz" "$h:/tmp/mo-os-$STAMP.tgz"
-  # shellcheck disable=SC2086
-  ssh $KEY_OPT "$h" "set -e
+  run_scp "$PACK/mo-os.tgz" "$h:/tmp/mo-os-$STAMP.tgz"
+  run_ssh "$h" "set -e
     T=\$(mktemp -d); tar -xzf /tmp/mo-os-$STAMP.tgz -C \$T
     sudo -n install -d -m 0755 /srv/www/mo-os-releases
     sudo -n rm -rf /srv/www/mo-os-releases/$STAMP
