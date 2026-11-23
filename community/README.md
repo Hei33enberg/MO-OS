@@ -6,8 +6,8 @@ This folder is the public ledger and the door into the Realm. The charter is [do
 
 | Surface | Use it for |
 |---|---|
-| [GitHub Issues](https://github.com/Hei33enberg/MOT-OS/issues) | bugs in the client, the installer, the examples, the docs |
-| [GitHub Discussions](https://github.com/Hei33enberg/MOT-OS/discussions) | how a line works, which host you are wiring |
+| [GitHub Issues](https://github.com/Hei33enberg/MO-OS/issues) | bugs in the client, the installer, the examples, the docs |
+| [GitHub Discussions](https://github.com/Hei33enberg/MO-OS/discussions) | how a line works, which host you are wiring |
 | [SECURITY.md](../SECURITY.md) | a vulnerability. Not an issue |
 
 There is no other official room. If a page names a chat that is not in this table, the page is wrong.
