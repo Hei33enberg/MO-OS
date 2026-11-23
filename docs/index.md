@@ -2,7 +2,7 @@
 
 Client docs for [mo-os](../README.md): the tools, the key, the limits, the words.
 
-**mo-os** is the system of mo, your main agent: one set of MCP tools with one identity (a tunnel), one memory (MOM) and one set of instructions (SHELL), in any model and any host. **mot3r** is the mother: the panel at [mot3r.com](https://mot3r.com/panel/) that holds your tunnels.
+**mo** is the processor: the whole, the brain of **mot3r**, the mother. One unity. **mo-os** gives it one set of MCP tools: one identity (a tunnel), one memory (MOM) and one set of instructions (SHELL), in any model and on any host. mot3r is the panel at [mot3r.com](https://mot3r.com/panel/) that holds your tunnels.
 
 The gate is `https://mcp.mot3r.com/mcp`. The live tool list wins over any count here: `GET https://api.mot3r.com/v1/tools` (109 tools on 2026-11-23, no key).
 
