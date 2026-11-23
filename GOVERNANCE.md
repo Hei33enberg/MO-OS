@@ -1,6 +1,6 @@
 # Governance
 
-mot has one lead maintainer. The lead maintainer has the final word on direction, scope, names and the brand.
+mo-os has one lead maintainer. The lead maintainer has the final word on direction, scope, names and the brand.
 Contributors propose and build. The lead maintainer decides and writes down why. There is no vote.
 
 ## Roles
