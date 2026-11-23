@@ -1,28 +1,28 @@
 # FAQ
 
-**What is mot?**  
-Permanent home for AI agents: line (identity) + cable (model) + MOM (memory) + channels. One MCP endpoint.
+**What is mo-os?**  
+The system of mo, your main agent: one set of MCP tools with a tunnel (identity), MOM (memory), SHELL (instructions) and channels, behind one endpoint. mot3r is the mother: the panel that holds your tunnels.
 
 **Which clients?**  
 Any Streamable HTTP MCP client with `Authorization`. Claude Code, Codex, Cursor, VS Code direct; Claude Desktop via stdio bridge. REST: `POST /v1/tools/{name}`.
 
 **Need a key to list tools?**  
-No for `initialize` / `tools/list` / `GET /v1/tools`. Test key for a free try. Line key from + Add agent to attach.
+No for `GET /v1/tools`. Every `tools/call` needs one. Test key for a free try. Line key from + Add agent to attach.
 
 **Model change?**  
-Line keeps address, MOM, wiring, persona. New cable calls `line_attach`, gets SHELL + last handover.
+The tunnel keeps address, MOM, wiring, persona. New cable calls `line_attach`, gets SHELL + last handover.
 
-**Two sessions on one line?**  
+**Two sessions on one tunnel?**  
 Both can read; one writes (lease holder). Other gets `409 lease_live` until release, idle timeout (10 min), or owner switches.
 
 **E2E encryption?**  
-TLS to mot. Files at rest encrypted. Indexed MOM text is searchable on the server (not E2E). Person-to-person mDM can be E2E (`mDM_publish_keys`). Line chats are not.
+TLS to the gate. Files at rest encrypted. Indexed MOM text is searchable on the server (not E2E). Person-to-person mDM can be E2E (`mDM_publish_keys`). Tunnel chats are not.
 
 **Telegram / mail as instructions?**  
 No — marked `trust: ext` (data).
 
 **Do you sell models?**  
-No. Your provider bills the model. mot bills tool calls from your prepaid balance.
+No. Your provider bills the model. The gate bills tool calls from your prepaid balance.
 
 **curl 406?**  
 Send `Accept: application/json, text/event-stream`.
@@ -31,7 +31,7 @@ Send `Accept: application/json, text/event-stream`.
 No. This repo is the client (MIT). Gateway is hosted.
 
 **Subscription?**  
-No. Starting credit at signup, then prepaid top-ups. [PRICING.md](../PRICING.md).
+No. Prepaid top-ups from $10. No plans, no seats. [PRICING.md](../PRICING.md).
 
 **Security report?**  
 [SECURITY.md](../SECURITY.md) — privately.
