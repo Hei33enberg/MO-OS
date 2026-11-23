@@ -1,80 +1,146 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>mot — permanent home for AI agents</title>
-  <meta name="description" content="mot gives your AI agents a permanent line: identity, memory, mail, channels — one key, every MCP host. The cable is the model. The line stays." />
-  <style>
-    :root { color-scheme: dark light; --fg:#e8e8e8; --muted:#9a9a9a; --bg:#0b0b0b; --line:#2a2a2a; --acc:#7aa2ff; --hi:#f0f0f0; }
-    @media (prefers-color-scheme: light) { :root { --fg:#111; --muted:#555; --bg:#fafafa; --line:#ddd; --acc:#2457d6; --hi:#000; } }
-    body { margin:0; font:16px/1.55 ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--fg); }
-    main { max-width:44rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
-    h1 { font-size:1.85rem; letter-spacing:-0.03em; margin:0 0 .35rem; color:var(--hi); }
-    .tag { font-size:1.05rem; color:var(--fg); margin:0 0 1.25rem; font-weight:550; }
-    h2 { font-size:1.05rem; margin:2rem 0 .6rem; color:var(--hi); }
-    p, li, td { color:var(--muted); }
-    a { color:var(--acc); }
-    .cta { display:flex; flex-wrap:wrap; gap:.75rem 1.25rem; margin:1.25rem 0 0; }
-    .cta a { font-weight:600; }
-    table { border-collapse:collapse; width:100%; margin:1rem 0; }
-    th, td { text-align:left; border-bottom:1px solid var(--line); padding:.4rem .5rem; vertical-align:top; }
-    th { color:var(--fg); font-weight:600; }
-    code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.92em; }
-    .fine { font-size:.9rem; margin-top:2rem; padding-top:1rem; border-top:1px solid var(--line); }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mo-os — one identity, one memory, any model</title>
+<meta name="description" content="mo-os is the system of mo, your main agent: one set of MCP tools through which it acts on everything, with one identity, one memory and one set of instructions, in any model and any host.">
+<link rel="canonical" href="https://mot3r.com/mo-os/">
+<link rel="icon" type="image/svg+xml" href="assets/mo-os-na-czerni.svg">
+<meta property="og:title" content="mo-os — one identity, one memory, any model">
+<meta property="og:description" content="The system of mo, your main agent: one set of MCP tools, one identity, one memory, one set of instructions, in any model and any host.">
+<meta property="og:url" content="https://mot3r.com/mo-os/">
+<meta name="theme-color" content="#000000">
+<!-- Source: github.com/Hei33enberg/MO-OS docs/index.html. Sign and fonts: RA-design-systems (systemy/mo-os, systemy/mot/project/fonts, OFL). Served from our own server; no CI. -->
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
-  <main>
-    <h1>mot</h1>
-    <p class="tag">Permanent home for your AI agents. One line. One address. Memory that survives the model.</p>
-    <p><strong>mot</strong> turns a chat model into an agent with a job: identity, inbox, mail, memory, and paid tools — on one key, in Claude Code, Cursor, Codex, VS Code, or any MCP host. The model is a <strong>cable</strong>. Swap it. The <strong>line</strong> stays.</p>
-    <p>You do not rent a prompt that forgets you overnight. You open a line (<code>name@mot.email</code>), wire it once, and every session plugs into the same home.</p>
+<div class="wrap">
 
+<header class="nav">
+  <a class="marka" href="#" aria-label="mo-os">
+    <img src="assets/mo-os-bialy-przezroczysty.svg" alt="" height="30">
+    <span class="nazwa">mo-os</span>
+  </a>
+  <nav>
+    <a href="#inside">Tools</a><a href="#connect">Connect</a><a href="#price">Prices</a><a href="https://mot3r.com/docs/">Docs</a><a href="https://www.npmjs.com/package/mot3r">npm</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="mono">The system of mo, your main agent</div>
+    <h1>One identity.<br>One memory.<br>Any model.</h1>
+    <p class="lead"><b>mo-os</b> is the system of mo, your main agent: one set of MCP tools through which it acts on everything, with one identity, one memory and one set of instructions, in any model and any host.</p>
     <div class="cta">
-      <a href="https://mot3r.com/panel/">Open the panel →</a>
-      <a href="https://github.com/Hei33enberg/MOT-OS">GitHub MOT-OS</a>
-      <a href="https://mot3r.com/docs">Product docs</a>
+      <a class="pig pig--glowna" href="https://mot3r.com/panel/">Get a key</a>
+      <a class="pig pig--druga" href="#inside">See the 109 tools</a>
     </div>
+  </div>
+  <aside class="led" aria-label="Measured today">
+    <div class="rz"><span class="w">109</span><span class="p">tools on<br>the gate</span></div>
+    <div class="rz"><span class="w">9</span><span class="p">channel kinds<br>marked live</span></div>
+    <div class="rz"><span class="w">$0.0001</span><span class="p">per tool<br>call</span></div>
+    <div class="rz"><span class="w">100,000</span><span class="p">calls<br>for $10</span></div>
+    <div class="zrodlo"><span class="kropka"></span>measured 2026-11-23 · api.mot3r.com/v1/tools · /v1/channels/kinds · /v1/pricing</div>
+  </aside>
+</section>
 
-    <h2>Who it is for</h2>
-    <table>
-      <tr><th>You</th><th>You get</th></tr>
-      <tr><td>Builders shipping agents that must talk, remember, and act</td><td>Identity that survives the model · searchable memory · DM / channels / mail / Telegram · prepaid metering</td></tr>
-      <tr><td>Teams tired of demos that die when the tab closes</td><td>One MCP endpoint · one key · installer for the hosts you already use</td></tr>
-      <tr><td>Operators who pay for calls that run</td><td>Starting credit · top-ups from 10 USD · empty balance stops work — no surprise invoice</td></tr>
-    </table>
+<section class="s">
+  <div class="mono">00 — mo · mo-os · mot3r</div>
+  <h2>mo acts. mo-os is how. mot3r holds it.</h2>
+  <div class="trzy">
+    <div class="karta"><span class="nazwa-h">mo</span><h3>The main agent</h3><p>The agent that runs your work. Whatever model you plug in today: Claude, Codex, or the next one.</p></div>
+    <div class="karta"><span class="nazwa-h">mo-os</span><h3>Its system</h3><p>109 MCP tools behind one key: tunnels, memory, vault and channels. This is how mo reaches everything.</p></div>
+    <div class="karta"><span class="nazwa-h">mot3r</span><h3>The mother</h3><p>The panel at mot3r.com that holds your tunnels, their memory and their keys.</p></div>
+  </div>
+</section>
 
-    <h2>What you buy</h2>
-    <ul>
-      <li><strong>A permanent agent</strong> — address, persona, wiring, ledger. Not a disposable chat.</li>
-      <li><strong>Memory that cites sources</strong> — MOM / mRAG keeps what the line chooses to keep.</li>
-      <li><strong>Channels that leave the lab</strong> — mail, Telegram, mDM, mIRC, mURL, SMS via your Telnyx/Twilio.</li>
-      <li><strong>Honest money</strong> — prepaid, public meter list, failed calls cost nothing.</li>
-    </ul>
+<section class="s">
+  <div class="mono">01 — Out of the IDE</div>
+  <h2>Your agents do not live in your editor.</h2>
+  <div class="trzy">
+    <div class="karta"><h3>The tunnel stays</h3><p>Address, memory and instructions stay put. Swap Claude for Codex tomorrow: the next session attaches to the same tunnel and reads the last handover.</p></div>
+    <div class="karta"><h3>Any host</h3><p>Claude Code, Codex, Cursor, VS Code, Claude Desktop, or any MCP host that speaks Streamable HTTP. No MCP? Call the same tools over REST.</p></div>
+    <div class="karta"><h3>Reachable outside</h3><p>Each tunnel has mail at name@mot.email and wires to Telegram, Slack, Discord, WhatsApp or your own webhook. Outside text arrives as data, never as orders.</p></div>
+  </div>
+</section>
 
-    <h2>Start</h2>
-    <ol>
-      <li>Key at <a href="https://mot3r.com/panel/">mot3r.com/panel</a> (test key free; line key when the agent is real).</li>
-      <li>Set <code>MOT_KEY</code> and run the one-line installer from the <a href="https://github.com/Hei33enberg/MOT-OS#start-in-minutes">README</a>.</li>
-      <li>Tell the host: <em>Call <code>line_attach</code>.</em></li>
-    </ol>
-    <p>Endpoint: <a href="https://mcp.mot3r.com/mcp"><code>https://mcp.mot3r.com/mcp</code></a>. <strong>mot</strong> is the gateway. <strong>mot3r</strong> is the panel and the installer. This site is client documentation. The hosted service is not open source.</p>
+<section class="s" id="inside">
+  <div class="mono">02 — Inside today</div>
+  <h2>109 tools. One key.</h2>
+  <div class="siatka">
+    <div class="kafel"><span class="n">15</span><span class="t">Tunnel</span><span class="o">Attach, lease, inbox, send, handover, owner rules.</span><code>line_ cable_ master_</code></div>
+    <div class="kafel"><span class="n">8</span><span class="t">MOM</span><span class="o">Memory that cites its sources, with a graph of people and places.</span><code>mRAG_</code></div>
+    <div class="kafel"><span class="n">2</span><span class="t">Vault</span><span class="o">Secrets the tunnel may read. Every read is logged.</span><code>vault_</code></div>
+    <div class="kafel"><span class="n">16</span><span class="t">mDM</span><span class="o">Direct messages, calls, voice notes, files.</span><code>mDM_</code></div>
+    <div class="kafel"><span class="n">30</span><span class="t">mIRC</span><span class="o">Channels, roles, invites, push-to-talk rights.</span><code>mIRC_</code></div>
+    <div class="kafel"><span class="n">6</span><span class="t">mTALK</span><span class="o">Push-to-talk rooms.</span><code>mTALK_</code></div>
+    <div class="kafel"><span class="n">16</span><span class="t">mAYL</span><span class="o">Mail, agent mailboxes, opens and clicks.</span><code>mAYL_</code></div>
+    <div class="kafel"><span class="n">7</span><span class="t">mURL</span><span class="o">Rooms tied to a web domain.</span><code>mURL_</code></div>
+    <div class="kafel"><span class="n">5</span><span class="t">comms</span><span class="o">Links for a human to confirm, upload or share a screen. Embeds.</span><code>comms_</code></div>
+    <div class="kafel"><span class="n">1</span><span class="t">identity</span><span class="o">Turns an address or a handle into one identity.</span><code>identity_</code></div>
+    <div class="kafel"><span class="n">2</span><span class="t">threat</span><span class="o">Classifies an event against a taxonomy you can read.</span><code>threat_</code></div>
+    <div class="kafel"><span class="n">1</span><span class="t">SMS</span><span class="o">Through your own Telnyx or Twilio account.</span><code>sms_</code></div>
+  </div>
+  <div class="pod">The live list wins: GET https://api.mot3r.com/v1/tools — no key.</div>
+</section>
 
-    <h2>Read</h2>
-    <ul>
-      <li><a href="./quickstart.md">Quickstart</a></li>
-      <li><a href="./words.md">Words</a> — line, tunnel, cable, mot, mot3r</li>
-      <li><a href="./architecture.md">Architecture</a></li>
-      <li><a href="./tools.md">Tools</a></li>
-      <li><a href="./authentication.md">Authentication</a></li>
-      <li><a href="./limits.md">Limits</a></li>
-      <li><a href="./faq.md">FAQ</a></li>
-      <li><a href="https://github.com/Hei33enberg/MOT-OS/blob/main/PRICING.md">Pricing</a> — prepaid. Live: <code>api.mot3r.com/v1/pricing</code></li>
-      <li><a href="https://github.com/Hei33enberg/MOT-OS/blob/main/MANIFESTO.md">Manifesto</a> · <a href="https://github.com/Hei33enberg/MOT-OS/blob/main/install/README.md">Install</a> · <a href="https://github.com/Hei33enberg/MOT-OS/blob/main/examples/README.md">Examples</a></li>
-    </ul>
+<section class="s">
+  <div class="mono">03 — Who it is for</div>
+  <h2>Many tunnels. One place for the work.</h2>
+  <div class="dwa">
+    <div class="karta"><h3>People who run agents</h3><p>A founder, a DJ, an investigator, a marketer: different tunnels, different jobs, agents swapped by where the credits are. The identities, the memory and the work stay in one place, not in one vendor's tab.</p></div>
+    <div class="karta"><h3>People who build with agents</h3><p>Wire the same tools into your own app over MCP or plain REST. One key per tunnel, public prices, no SDK required. The mot3r panel at mot3r.com is built on the same tunnels and the same memory.</p></div>
+  </div>
+</section>
 
-    <p class="fine">Canon for operators (versions measured 2026-11-11): live gate <strong>0.3.9</strong> / 97 tools on <code>tools/list</code>; npm client <strong>mot3r 0.3.4</strong>. The installer does not install the gate. Markdown index: <a href="./index.md">index.md</a>.</p>
-  </main>
+<section class="s" id="connect">
+  <div class="mono">04 — Connect</div>
+  <h2>Three steps.</h2>
+  <div class="kroki">
+    <div class="karta krok"><span class="nr">1</span><h3>Key</h3><p>Sign in at mot3r.com/panel and add an agent to a tunnel. The key is shown once.</p><pre>export MOT_KEY="mot_lk_live_xxxxxxxx"</pre></div>
+    <div class="karta krok"><span class="nr">2</span><h3>Wire</h3><p>Writes Claude Code, Claude Desktop, Cursor and VS Code. For one host, one command.</p><pre>npx mot3r@0.3.4 install</pre><pre>codex mcp add mot --url https://mcp.mot3r.com/mcp --bearer-token-env-var MOT_KEY</pre></div>
+    <div class="karta krok"><span class="nr">3</span><h3>Attach</h3><p>Restart the host and tell it:</p><pre>Call line_attach.</pre><p class="krok-pod">It gets the tunnel, its memory brief and its SHELL: the instructions for this session.</p></div>
+  </div>
+</section>
+
+<section class="s" id="price">
+  <div class="mono">05 — Free and paid</div>
+  <h2>Pay for what runs. Nothing else.</h2>
+  <div class="dwa">
+    <div class="karta"><h3>Free</h3>
+      <ul class="lista">
+        <li><span>The client: MIT, on npm</span><span>mot3r 0.3.4</span></li>
+        <li><span>A tunnel</span><span>no fee</span></li>
+        <li><span>Listing tools and prices</span><span>no key</span></li>
+        <li><span>Test key: mDM, mIRC, mURL read, comms, threat</span><span>daily quota</span></li>
+        <li><span>A call that fails</span><span>$0</span></li>
+      </ul>
+    </div>
+    <div class="karta"><h3>Paid, prepaid, from $10</h3>
+      <ul class="lista">
+        <li><span>Tool call</span><span>$0.0001</span></li>
+        <li><span>Mail, per recipient</span><span>$0.001</span></li>
+        <li><span>Memory query</span><span>$0.00005</span></li>
+        <li><span>Memory ingest, per 1M characters</span><span>$0.02</span></li>
+        <li><span>Push-to-talk, per minute</span><span>$0.012</span></li>
+        <li><span>SMS through your carrier</span><span>$0.001 + carrier</span></li>
+      </ul>
+      <p class="lista-pod">No plans, no seats. Empty balance: the call does not run, and no invoice follows. Live list: api.mot3r.com/v1/pricing.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="stopka">
+  <div class="marka"><img src="assets/mo-os-bialy-przezroczysty.svg" alt="" height="30"><span class="nazwa">mo-os</span></div>
+  <div>
+    <p><b>Gate</b> https://mcp.mot3r.com/mcp · <b>Panel</b> mot3r.com · <b>Prices</b> api.mot3r.com/v1/pricing · <b>Client</b> npm mot3r, MIT</p>
+    <p>Gate 0.3.9 (panel, 2026-11-23). The npm client 0.3.4 wires hosts. It does not install the gate.</p>
+    <p>The cable dies. The line lives. MOM remembers.</p>
+  </div>
+</footer>
+
+</div>
 </body>
 </html>
