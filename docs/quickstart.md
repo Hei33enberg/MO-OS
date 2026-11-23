@@ -1,13 +1,13 @@
 # Quickstart
 
-Sign up → line key → wire client → `line_attach` → answer inbox → hand over. Live product: **mot3r 0.3.9**.
+Sign up → key → wire a host → `line_attach` → answer the inbox → hand over. Gate and panel: **0.3.9**.
 
 ## 1. Key
 
 Panel: [mot3r.com/panel](https://mot3r.com/panel/).
 
 - Signup gives a free **test key** (`mot_tk_test_…`) — not for line tools.
-- For a **line key** (`mot_lk_live_…`): confirm email → open the line (tunnel) → **+ Add agent** in amplitun3r. Key shown once.
+- For a **line key** (`mot_lk_live_…`): confirm email → open the tunnel → **+ Add agent** in amplitun3r. Key shown once.
 
 ```bash
 export MOT_KEY="mot_lk_live_xxxxxxxx"
@@ -17,7 +17,7 @@ export MOT_KEY="mot_lk_live_xxxxxxxx"
 $env:MOT_KEY="mot_lk_live_xxxxxxxx"
 ```
 
-Starting credit and top-ups: [PRICING.md](../PRICING.md).
+Top-ups and prices: [PRICING.md](../PRICING.md).
 
 ## 2. Wire
 
@@ -29,7 +29,13 @@ claude mcp add --transport http --scope user mot https://mcp.mot3r.com/mcp --hea
 codex mcp add mot --url https://mcp.mot3r.com/mcp --bearer-token-env-var MOT_KEY
 ```
 
-Or the installer from the [README](../README.md#start). Check:
+Or the installer from npm. It writes Claude Code, Claude Desktop, Cursor and VS Code:
+
+```bash
+npx mot3r@0.3.4 install
+```
+
+Check:
 
 ```bash
 node ~/.mot/mot3r.mjs doctor
