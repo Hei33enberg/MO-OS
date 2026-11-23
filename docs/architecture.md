@@ -2,9 +2,9 @@
 
 Two things share a name and must not be collapsed.
 
-| Thing | What it is | Version on 2026-11-11 |
+| Thing | What it is | Version on 2026-11-23 |
 |---|---|---|
-| **mot**, the gateway | Hosted MCP gate at `https://mcp.mot3r.com/mcp` | `serverInfo.version` **0.3.9**. Title: "mot — tunnels for agents". **97** tools on `tools/list` |
+| **The gate** | Hosted MCP gate at `https://mcp.mot3r.com/mcp`, serving the mo-os tools | **0.3.9** (panel `wersja.json`). **109** tools on `GET /v1/tools` |
 | **mot3r**, the client in this repo | Installer and stdio bridge, npm package `mot3r` | **0.3.4** |
 
 `npx mot3r` and the one-line installer install **0.3.4**. They point a host at the live gate. They do not download 0.3.9, and they do not contain the gate.
@@ -22,12 +22,12 @@ AI host
         │  Authorization: Bearer <MOT_KEY>     (tools/call only)
         │  Accept: application/json, text/event-stream
         ▼
-mot 0.3.9  (hosted, not in this repo)
+gate 0.3.9  (hosted, not in this repo)
         │
         ├─ line_ / cable_ / vault_     identity, lease, memory reads
-        ├─ mDM_ mIRC_ mURL_ mAYL_      messenger families
+        ├─ mDM_ mIRC_ mTALK_ mURL_ mAYL_  messenger families
         ├─ mRAG_                       MOM
-        ├─ comms_ threat_ sms_         capabilities, classify, carrier SMS
+        ├─ comms_ identity_ threat_ sms_  capabilities, identity, classify, carrier SMS
         └─ REST twins on api.mot3r.com
               GET  /v1/tools
               POST /v1/tools/{name}
@@ -36,7 +36,7 @@ mot 0.3.9  (hosted, not in this repo)
               GET  /v1/channels/kinds
 ```
 
-`initialize` and `tools/list` answer without a key. Every `tools/call` needs one. A batch that contains `tools/call` is refused. One call per request.
+`GET /v1/tools` answers without a key. Every `tools/call` needs one. A batch that contains `tools/call` is refused. One call per request.
 
 The same key and the same meters apply on the REST twin. Prices are public: `GET https://api.mot3r.com/v1/pricing` (no key). Failed calls are not billed. An empty balance is `402` and the call does not run.
 
@@ -73,13 +73,13 @@ Hosts the installer writes, when it finds them: Claude Code, Claude Desktop, Cur
 - Postal egress and the Telegram bridge
 - The database
 
-Those belong to the hosted product. Docs name tools that were on `tools/list` on 2026-11-11. If the count moves, the endpoint wins and this page should be dated again. Do not freeze 97 into code.
+Those belong to the hosted product. Docs name tools that were on `GET /v1/tools` on 2026-11-23. If the count moves, the endpoint wins and this page should be dated again. Do not freeze 109 into code.
 
 ## Versions, said once
 
 | Surface | Field | What a person should believe |
 |---|---|---|
-| Live gate `mcp.mot3r.com` | **0.3.9** | What `initialize` returned on 2026-11-11. 97 tools the same day |
+| Live gate `mcp.mot3r.com` | **0.3.9** | Panel `wersja.json` on 2026-11-23. 109 tools on `GET /v1/tools` the same day |
 | npm / this repo `mot3r` | **0.3.4** | What `packages/mot3r/package.json` and `VERSION` inside `mot3r.mjs` say |
 | One-line installer | embeds **0.3.4** | Running it configures hosts. It does not upgrade the gate |
 
