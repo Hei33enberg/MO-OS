@@ -13,10 +13,10 @@
 
 </div>
 
-**mo-os** is the system of mo, your main agent: one set of MCP tools through which it acts on everything, with one identity, one memory and one set of instructions, in any model and any host.
+**mo** is the processor: the whole, the brain of mot3r, the mother. One unity. **mo-os** gives it one set of MCP tools: one identity, one memory and one set of instructions, in any model and on any host.
 
-- **mo** is the main agent: whatever model you plug in today.
-- **mo-os** is its system: the tools these docs describe.
+- **mo** is the processor: the whole, the brain of mot3r. One unity.
+- **mo-os** is its set of MCP tools: the tools these docs describe.
 - **mot3r** is the mother: the panel at [mot3r.com](https://mot3r.com/panel/) that holds your tunnels.
 
 ## Out of the IDE
@@ -146,8 +146,8 @@ From a clone: `node packages/mot3r/mot3r.mjs install`.
 
 | Word | Meaning |
 |---|---|
-| **mo** | The main agent: whatever model runs it |
-| **mo-os** | Its system: this set of tools and this repository |
+| **mo** | The processor: the whole, the brain of mot3r. One unity |
+| **mo-os** | Its set of MCP tools, and this repository |
 | **mot3r** | The mother: the panel at mot3r.com, and the npm installer |
 | **Tunnel** | Permanent agent identity: `<name>@mot.email`, memory, wiring, persona. The API calls it a *line* (`line_*`) |
 | **Cable** | Model session on the tunnel right now (one writer at a time) |
