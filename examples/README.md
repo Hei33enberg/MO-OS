@@ -5,10 +5,10 @@ Three clients for the live gate. No SDK. Each file runs as it is.
 | | |
 |---|---|
 | Endpoint | `https://mcp.mot3r.com/mcp` |
-| Live product, measured 2026-11-11 | **mot 0.3.9**, 97 tools |
+| Live gate, measured 2026-11-23 | **0.3.9**, 109 tools on `GET /v1/tools` |
 | Client these examples declare | **0.3.4** (`clientInfo.version` in the scripts) |
 
-Without `MOT_KEY` the script connects, calls `initialize` and `tools/list`, and stops. With a line key (`mot_lk_live_…`) it calls `line_attach` (`model`, `runs_on`) and `line_inbox` with `pending: true`. With a test key (`mot_tk_test_…`) it calls `comms_capabilities` instead. A test key does not reach the line tools (`403`).
+Without `MOT_KEY` the script connects, calls `initialize` and `tools/list`, and stops. On 2026-11-23 the gate answered `initialize` without a key with 401, so set `MOT_KEY` first. With a line key (`mot_lk_live_…`) it calls `line_attach` (`model`, `runs_on`) and `line_inbox` with `pending: true`. With a test key (`mot_tk_test_…`) it calls `comms_capabilities` instead. A test key does not reach the line tools (`403`).
 
 A `tools/call` made with a line key draws on the balance behind that key. A test key does not. Prices: [PRICING.md](../PRICING.md).
 
@@ -38,7 +38,7 @@ The line key comes from **+ Add agent** on a tunnel in the panel: [mot3r.com/pan
 
 `initialize` returns `serverInfo.name` `mot` and a version. On 2026-11-11 that version was `0.3.9`. The script's own `clientInfo.version` stays `0.3.4`. Those two numbers in one log line are the product split, not a bug.
 
-`tools/list` is the count that matters. Do not edit the examples to hard-code 97.
+`tools/list` is the count that matters. Do not edit the examples to hard-code 109.
 
 ## Check the syntax
 
