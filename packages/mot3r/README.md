@@ -1,6 +1,6 @@
 # mot3r
 
-Installer and stdio bridge for the [mot](https://github.com/Hei33enberg/MOT-OS#readme) gateway. One file,
+Installer and stdio bridge for [mo-os](https://mot3r.com/mo-os/): it wires the gate at `mcp.mot3r.com` into your hosts. One file,
 `mot3r.mjs`. No dependencies. Node.js 18 or newer. MIT.
 
 ## Version
