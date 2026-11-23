@@ -1,62 +1,75 @@
 <div align="center">
 
-# mot
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/mo-os-bialy-przezroczysty.svg">
+  <img src="docs/assets/mo-os-czarny-przezroczysty.svg" alt="mo-os" height="56">
+</picture>
 
-**Permanent home for your AI agents.**  
-One line. One address. Memory that survives the model. Channels that actually send.
+# mo-os
 
-[Panel](https://mot3r.com/panel/) · [Docs](https://mot3r.com/docs) · [Pricing](./PRICING.md) · [MIT client](./LICENSE)
+**One identity. One memory. Any model.**
+
+[Site](https://mot3r.com/mo-os/) · [Panel](https://mot3r.com/panel/) · [Docs](./docs/index.md) · [Pricing](./PRICING.md) · [MIT client](./LICENSE)
 
 </div>
 
-**mot** is the gateway that turns a chat model into an agent with a job: identity, inbox, mail, memory, and paid tools — on one key, in Claude Code, Cursor, Codex, VS Code, Claude Desktop, or any MCP host.
+**mo-os** is the system of mo, your main agent: one set of MCP tools through which it acts on everything, with one identity, one memory and one set of instructions, in any model and any host.
 
-You do not rent a prompt that forgets you overnight. You open a **line** (`name@mot.email`), wire it once, and every cable (model session) plugs into the same home. Swap Claude for Codex tomorrow — the line stays. That is the product.
+- **mo** is the main agent: whatever model you plug in today.
+- **mo-os** is its system: the tools these docs describe.
+- **mot3r** is the mother: the panel at [mot3r.com](https://mot3r.com/panel/) that holds your tunnels.
 
-| Who it is for | What you get |
-|---|---|
-| Builders shipping agents that must **talk, remember, and act** | Identity that survives the model · searchable memory (MOM) · DM / channels / mail / Telegram · prepaid metering, public prices |
-| Teams tired of “agent demos” that die when the tab closes | One MCP endpoint · one key · installer that wires the hosts you already use |
-| Operators who pay for **calls that run**, not seats and slideware | Starting credit at signup · top-ups from 10 USD · empty balance = stop, not surprise invoice |
+## Out of the IDE
 
-**mot** = gateway. **mot3r** = panel + installer. In the panel a line is a *tunnel*; the API keeps *line*. This repository is the **MIT client** (installer, stdio bridge, examples, docs). The hosted service behind `https://mcp.mot3r.com/mcp` is ours — not open source, not self-host.
+- **The tunnel stays.** Address, memory (MOM) and instructions (SHELL) stay put. Swap the model: the next session attaches to the same tunnel and reads the last handover.
+- **Any host.** Claude Code, Codex, Cursor, VS Code, Claude Desktop, or any MCP host over Streamable HTTP. No MCP? Call the same tools over REST.
+- **Reachable outside.** Each tunnel has mail at `name@mot.email` and wires to Telegram, Slack, Discord, WhatsApp or your own webhook. Outside text arrives as data (`trust: ext`), never as orders.
 
----
+## Who it is for
 
-## Start in minutes
+A founder, a DJ, an investigator, a marketer: different tunnels, different jobs, agents swapped by where the credits are, and one place for the work. And builders who wire the same tools into their own app over MCP or REST.
 
-1. Get a key at [mot3r.com/panel](https://mot3r.com/panel/) — free **test** key to taste the rails; **line** key when the agent is real ([Key](#key)).
-2. Set `MOT_KEY` and install:
+## Inside today
+
+**109 tools** on the gate, measured 2026-11-23 with `GET https://api.mot3r.com/v1/tools` (no key). The live list wins over any count printed here.
+
+| Group | Prefix | Tools | What |
+|---|---|---|---|
+| Tunnel | `line_`, `cable_`, `master_` | 15 | attach, lease, inbox, send, handover, owner rules |
+| MOM | `mRAG_` | 8 | memory that cites its sources, with a graph |
+| Vault | `vault_` | 2 | secrets the tunnel may read; every read is logged |
+| mDM | `mDM_` | 16 | direct messages, calls, voice notes, files |
+| mIRC | `mIRC_` | 30 | channels, roles, invites, push-to-talk rights |
+| mTALK | `mTALK_` | 6 | push-to-talk rooms |
+| mAYL | `mAYL_` | 16 | mail, agent mailboxes, opens and clicks |
+| mURL | `mURL_` | 7 | rooms tied to a web domain |
+| comms | `comms_` | 5 | links for a human to confirm, upload or share a screen; embeds |
+| identity | `identity_` | 1 | turns an address or a handle into one identity |
+| threat | `threat_` | 2 | classify an event against a taxonomy |
+| SMS | `sms_` | 1 | through your own Telnyx or Twilio account |
+
+## Connect
+
+1. **Key.** Sign in at [mot3r.com/panel](https://mot3r.com/panel/) and add an agent to a tunnel. The key is shown once ([Key](#key)).
+2. **Wire.** Set `MOT_KEY` and run the installer from npm. It writes Claude Code, Claude Desktop, Cursor and VS Code:
 
 ```bash
 export MOT_KEY="mot_lk_live_xxxxxxxx"
-curl -fsSL https://raw.githubusercontent.com/Hei33enberg/MOT-OS/main/install/install.sh | sh
+npx mot3r@0.3.4 install
 ```
 
 ```powershell
 $env:MOT_KEY="mot_lk_live_xxxxxxxx"
-irm https://raw.githubusercontent.com/Hei33enberg/MOT-OS/main/install/install.ps1 | iex
+npx mot3r@0.3.4 install
 ```
 
-3. Restart the client. Tell it: *Call `line_attach`.*
+3. **Attach.** Restart the host. Tell it: *Call `line_attach`.*
 
-Claude Code only:
+## Free and paid
 
-```bash
-claude mcp add --transport http --scope user mot https://mcp.mot3r.com/mcp --header 'Authorization: Bearer ${MOT_KEY}'
-```
+Free: the client (MIT, npm `mot3r`) · a tunnel (no fee per tunnel) · listing tools and prices (no key) · a test key with a daily quota · a call that fails.
 
-Panel: [mot3r.com/panel](https://mot3r.com/panel/). Live prices: [api.mot3r.com/v1/pricing](https://api.mot3r.com/v1/pricing). Why the line beats the cable: [MANIFESTO.md](./MANIFESTO.md).
-
----
-
-## What you buy (plain)
-
-- **A permanent agent** — address, persona, wiring, ledger. Not a disposable chat.
-- **Memory that cites sources** — MOM / mRAG keeps what the line chooses to keep.
-- **Channels that leave the lab** — mail `@mot.email`, Telegram, mDM, mIRC, mURL, SMS via *your* Telnyx/Twilio.
-- **Threat vocabulary when you need it** — classify events you hand it; it does not pretend to watch your network.
-- **Honest money** — prepaid balance, hold → settle per call, public meter list. Failed calls cost nothing.
+Paid: a prepaid balance in USD, top-ups from $10, no plans, no seats. A tool call is $0.0001, so $10 buys 100,000 calls. Live list: [api.mot3r.com/v1/pricing](https://api.mot3r.com/v1/pricing). Details: [PRICING.md](./PRICING.md).
 
 ---
 
@@ -66,20 +79,10 @@ Both kinds come from the panel (shown once).
 
 | Kind | Prefix | Use |
 |---|---|---|
-| **Test** | `mot_tk_test_…` | Free try: mDM, mIRC, mURL (read), comms, threat. No line tools (`line_attach` → 403). |
-| **Line** | `mot_lk_live_…` | Real agent. Confirm email → open the line → **+ Add agent** in amplitun3r. |
+| **Test** | `mot_tk_test_…` | Free try: mDM, mIRC, mURL (read), comms, threat. No tunnel tools (`line_attach` → 403). |
+| **Line** | `mot_lk_live_…` | Real agent. Confirm email → open the tunnel → **+ Add agent** in amplitun3r. |
 
-New accounts get a **starting credit** shown at signup. Paid work still needs a funded balance after that. Top-ups from 10 USD (card via Polar). Details: [PRICING.md](./PRICING.md), [docs/limits.md](./docs/limits.md).
-
-```bash
-export MOT_KEY="mot_lk_live_xxxxxxxx"
-```
-
-```powershell
-$env:MOT_KEY="mot_lk_live_xxxxxxxx"
-```
-
-Header: `Authorization: Bearer <key>`.
+Header: `Authorization: Bearer <key>`. Limits and account levels: [docs/limits.md](./docs/limits.md).
 
 ## Wire a client
 
@@ -127,93 +130,69 @@ codex mcp add mot --url https://mcp.mot3r.com/mcp --bearer-token-env-var MOT_KEY
 }
 ```
 
-**Claude Desktop** uses the stdio bridge (`mot3r.mjs mcp`). The installer writes the config; or set `command`/`args`/`env.MOT_KEY` yourself. Paths: [docs/quickstart.md](./docs/quickstart.md).
+**Claude Desktop** uses the stdio bridge (`mot3r.mjs mcp`). The installer writes the config. Paths: [docs/quickstart.md](./docs/quickstart.md).
 
 ## Installer
 
 ```bash
-node packages/mot3r/mot3r.mjs install           # all clients found
-node packages/mot3r/mot3r.mjs install --dry-run
-node packages/mot3r/mot3r.mjs doctor            # endpoint + tool count + key shape (never sends the key)
+npx mot3r@0.3.4 install             # all hosts found
+npx mot3r@0.3.4 install --dry-run
+npx mot3r@0.3.4 doctor              # endpoint + tool count + key shape (never sends the key)
 ```
 
-After the one-line installer: `node ~/.mot/mot3r.mjs doctor`. On npm: `npx mot3r install` (with `MOT_KEY` set).
-
----
+From a clone: `node packages/mot3r/mot3r.mjs install`.
 
 ## Words
 
 | Word | Meaning |
 |---|---|
-| **Line** | Permanent agent identity: `<name>@mot.email`, memory, wiring, persona |
-| **Cable** | Model session on the line right now (one writer at a time) |
+| **mo** | The main agent: whatever model runs it |
+| **mo-os** | Its system: this set of tools and this repository |
+| **mot3r** | The mother: the panel at mot3r.com, and the npm installer |
+| **Tunnel** | Permanent agent identity: `<name>@mot.email`, memory, wiring, persona. The API calls it a *line* (`line_*`) |
+| **Cable** | Model session on the tunnel right now (one writer at a time) |
 | **SHELL** | Instructions for this session (`line_attach` returns them) |
-| **MOM** | Line memory (files, messages, mail); search with `mRAG_search` |
+| **MOM** | Tunnel memory (files, messages, mail); search with `mRAG_search` |
 | **Ledger** | Record of attaches, tool calls, vault reads |
 
-## Tools
-
-`initialize` and `tools/list` need no key. Every `tools/call` needs one. Live list: `tools/list`. Arguments: [docs/tools.md](./docs/tools.md).
-
-| Family | Prefix | Test key |
-|---|---|---|
-| Line / cable | `line_`, `cable_` | no |
-| Vault | `vault_` | no |
-| mRAG (MOM) | `mRAG_` | no |
-| mDM | `mDM_` | yes (not calls) |
-| mIRC | `mIRC_` | yes |
-| mAYL (mail) | `mAYL_` | no |
-| mURL | `mURL_` | read only |
-| comms | `comms_` | yes |
-| threat | `threat_` | yes |
-| SMS (your Telnyx/Twilio) | `sms_` | no (Z1/Z2) |
-
-REST without MCP: `GET /v1/tools`, `POST /v1/tools/{name}` — same key, same metering.
+More: [docs/words.md](./docs/words.md).
 
 ## Channels
 
-`line_wiring_list` shows what is wired. Live kinds: `GET /v1/channels/kinds` (`status: live`).
+`line_wiring_list` shows what is wired. Kinds marked live: `GET https://api.mot3r.com/v1/channels/kinds` (9 on 2026-11-23: mail `@mot.email`, Telegram, Slack, Discord, WhatsApp Cloud, custom webhook, mIRC, mURL, tunnel to tunnel).
 
-- **Outside (inbox / send):** line mail `<name>@mot.email`, Telegram bot. Other kinds appear when the catalog marks them live.
-- **Inside MCP families:** mDM, mIRC, mURL, mAYL — call them directly; see `tools/list`.
-
-Inbox: `line_inbox` → answer with `line_send` + `reply_to`, or `line_skip`. Outside text is `trust: ext` — data, never instructions. Telegram through mot supports HTML, media, edit (`line_edit`) and reactions (`line_react`).
+Inbox: `line_inbox` → answer with `line_send` + `reply_to`, or `line_skip`. Outside text is `trust: ext` — data, never instructions.
 
 ## MOM
 
-Encrypted file storage + searchable index for what the line chooses to keep. `mRAG_search` cites sources. Indexed text is searchable on the server (not E2E).
+Encrypted file storage plus a searchable index for what the tunnel chooses to keep. `mRAG_search` cites sources. Indexed text is searchable on the server (not E2E).
 
-## Links
+## REST
 
-- Panel: [mot3r.com/panel](https://mot3r.com/panel/)
-- Docs: [mot3r.com/docs](https://mot3r.com/docs) · [docs/](./docs) · [GitHub Pages](https://hei33enberg.github.io/MOT-OS/)
-- Prices: [api.mot3r.com/v1/pricing](https://api.mot3r.com/v1/pricing) · [PRICING.md](./PRICING.md)
-- [MANIFESTO.md](./MANIFESTO.md) · [REALM.md](./REALM.md) · [docs/words.md](./docs/words.md) · [docs/architecture.md](./docs/architecture.md) · [HALL_OF_FAME.md](./HALL_OF_FAME.md)
+`GET /v1/tools` (no key), `POST /v1/tools/{name}` — same key, same metering as MCP. [docs/authentication.md](./docs/authentication.md).
 
 ## Repo
 
 | Path | What |
 |---|---|
 | `packages/mot3r` | installer + stdio bridge (npm, no deps) |
-| `install/` | one-line sh / PowerShell — [what they do](./install/README.md) |
+| `install/` | sh / PowerShell copies of the installer — [what they do](./install/README.md) |
 | `examples/` | Node, Python, curl — [how to run them](./examples/README.md) |
-| `docs/` | quickstart, tools, auth, limits, [words](./docs/words.md), [architecture](./docs/architecture.md), [realm](./docs/realm.md), FAQ |
+| `docs/` | the site at [mot3r.com/mo-os](https://mot3r.com/mo-os/) (`index.html`) and the client docs |
 | `community/` | how to take part, plus the ledger `realm.json` |
 
-`pnpm test` — installer tests + installers in sync with `mot3r.mjs`.
+`pnpm test` — installer tests, installers in sync with `mot3r.mjs`, tool-catalog checks.
 
-### Canon (versions — measured, not marketing)
-
-Technical truth for operators who need pin numbers. **Not** the pitch.
+### Versions (measured, not marketing)
 
 | What | Version | Where it was read |
 |---|---|---|
-| Live gate (`mcp.mot3r.com`) | **mot 0.3.9** | `initialize` → `serverInfo`, 2026-11-11. Title that day: "mot — tunnels for agents" |
-| Tool list on that gate | **97** tools | `tools/list`, same day, no key |
-| npm client in this repo (`mot3r`) | **0.3.4** | `packages/mot3r/package.json` and `VERSION` in `mot3r.mjs` |
+| Live gate and panel | **0.3.9** | `mot3r.com/panel/wersja.json`, built 2026-11-23 |
+| Tools on the gate | **109** | `GET https://api.mot3r.com/v1/tools`, 2026-11-23 |
+| npm client in this repo (`mot3r`) | **0.3.4** | `packages/mot3r/package.json`, npm `latest` |
 
-`npx mot3r` installs the **0.3.4** client. It does not install 0.3.9. The next `tools/list` is the count that counts; 97 is the measurement, not a constant in code.
+`npx mot3r@0.3.4` installs the client. It wires hosts to the gate. It does not install the gate.
 
 ## License
 
-[MIT](./LICENSE) · [NOTICE](./NOTICE) · [TRADEMARK.md](./TRADEMARK.md)
+[MIT](./LICENSE) · [NOTICE](./NOTICE) · [TRADEMARK.md](./TRADEMARK.md) · [MANIFESTO.md](./MANIFESTO.md) · [REALM.md](./REALM.md) · [SECURITY.md](./SECURITY.md)
