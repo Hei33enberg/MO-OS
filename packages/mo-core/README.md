@@ -14,6 +14,6 @@ pnpm test                 # from the repository root: includes this package
 pnpm check:mo-core        # compares the catalog with the sibling repositories (read-only, needs checkouts)
 ```
 
-Rules: [docs/mo-core-naming.md](../../docs/mo-core-naming.md).
+Rules: [NAMING.md](./NAMING.md).
 
 This package names legacy tool surfaces of other products on purpose: an alias is only useful if it says where the old name lives. That is why it is not public text and must not be published or copied into the public docs.
