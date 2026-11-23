@@ -12,7 +12,8 @@ Read before changing this repository.
 | `scripts/build-installers.mjs` | rebuilds `install/` from `mot3r.mjs` |
 | `scripts/check-mo-core-drift.mjs` | compares the catalog with the sibling repos, read-only (`pnpm check:mo-core`) |
 | `examples/` | Node, Python, curl |
-| `docs/` | public docs (English only) |
+| `docs/` | public docs (English only); `docs/index.html` + `site.css` + `assets/` + `fonts/` = the site at https://mot3r.com/mo-os/ |
+| `scripts/deploy-site.sh` | deploys the site from a maintainer machine (scp, no CI) |
 
 ## Before a PR
 
@@ -30,10 +31,11 @@ No CI — paste real command output in the PR.
 - After editing `mot3r.mjs`, run `pnpm build:installers` and commit `install/` together.
 - Never print, log, or commit a real key. Samples: `mot_lk_live_xxxxxxxx`.
 - Docs match the live endpoint. Check:  
-  `curl -sS https://mcp.mot3r.com/mcp -H 'content-type: application/json' -H 'accept: application/json, text/event-stream' -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'`
+  `curl -sS https://api.mot3r.com/v1/tools` (no key). Numbers on the site and in the READMEs carry their source and the date they were measured. No roadmap, no "soon".
+- **The site** (`docs/index.html`) is served from our own server at https://mot3r.com/mo-os/. Deploy with `scripts/deploy-site.sh`. No GitHub Actions, no GitHub Pages. The site has a strict CSP: no inline styles, no inline scripts, no third-party hosts.
 - **Product vs client:** live product = panel `wersja.json` / mot3r.com (**0.3.9**). Root `package.json` and `packages/mot3r` stay at the published npm client (**0.3.4**) until you mean to publish. Docs must not claim `npx mot3r` installs the product version. Channel claims follow `GET /v1/channels/kinds` (`status: live`) and `tools/list` — do not invent families.
 - Public text: English only. No Polish. No mosADD / 3T3R / m0s brand leakage.
-- **Exception: `packages/mo-core/`.** Its aliases name the legacy tool surfaces of other products on purpose. It is data, not public text: never publish it and never copy those names into `docs/` or the READMEs. Add or rename a tool by [docs/mo-core-naming.md](docs/mo-core-naming.md); `pnpm test` runs its conformance test.
+- **Exception: `packages/mo-core/`.** Its aliases name the legacy tool surfaces of other products on purpose. It is data, not public text: never publish it and never copy those names into `docs/` or the READMEs. Add or rename a tool by [packages/mo-core/NAMING.md](packages/mo-core/NAMING.md); `pnpm test` runs its conformance test.
 
 ## Words
 
@@ -47,8 +49,10 @@ No CI — paste real command output in the PR.
 | ledger | audit of steps |
 | m✲n3y | prepaid USD balance |
 | amplitun3r | panel drawer: + Add agent |
-| mot | gateway |
-| mot3r | panel + this installer |
+| mo | the main agent |
+| mo-os | its system: these tools and this repo |
+| mot3r | the mother: panel at mot3r.com + this installer |
+| gate | `mcp.mot3r.com` |
 
 ## As a line
 
