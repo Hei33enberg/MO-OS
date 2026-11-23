@@ -1,7 +1,7 @@
 # FAQ
 
 **What is mo-os?**  
-The system of mo, your main agent: one set of MCP tools with a tunnel (identity), MOM (memory), SHELL (instructions) and channels, behind one endpoint. mot3r is the mother: the panel that holds your tunnels.
+One set of MCP tools for mo, the processor: the whole, the brain of mot3r, the mother. One unity. The tools give it a tunnel (identity), MOM (memory), SHELL (instructions) and channels, behind one endpoint. mot3r is the panel that holds your tunnels.
 
 **Which clients?**  
 Any Streamable HTTP MCP client with `Authorization`. Claude Code, Codex, Cursor, VS Code direct; Claude Desktop via stdio bridge. REST: `POST /v1/tools/{name}`.
